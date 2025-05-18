@@ -1,9 +1,8 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Xml;
+using Newtonsoft.Json;
 
 namespace DiscordEmbedSender
 {
@@ -38,7 +37,7 @@ namespace DiscordEmbedSender
             jsonTextBox.Dock = DockStyle.Fill;
             jsonTextBox.ReadOnly = true;
             jsonTextBox.Font = new Font("Consolas", 10);
-            jsonTextBox.Text = JsonConvert.SerializeObject(embedData, Formatting.Indented);
+            jsonTextBox.Text = JsonConvert.SerializeObject(embedData, Newtonsoft.Json.Formatting.Indented);
             jsonTab.Controls.Add(jsonTextBox);
 
             // Visual Preview Tab
@@ -73,7 +72,7 @@ namespace DiscordEmbedSender
             copyJsonButton.Anchor = AnchorStyles.Right;
             copyJsonButton.Location = new Point(buttonPanel.Width - 240, 10);
             copyJsonButton.Click += (s, e) => {
-                Clipboard.SetText(JsonConvert.SerializeObject(embedData, Formatting.Indented));
+                Clipboard.SetText(JsonConvert.SerializeObject(embedData, Newtonsoft.Json.Formatting.Indented));
                 MessageBox.Show("JSON in Zwischenablage kopiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };
 
@@ -178,7 +177,11 @@ namespace DiscordEmbedSender
 
                 foreach (var field in fields)
                 {
-                    bool isInline = bool.Parse(field.GetValueOrDefault("inline", false).ToString());
+                    bool isInline = false;
+                    if (field.ContainsKey("inline"))
+                    {
+                        bool.TryParse(field["inline"].ToString(), out isInline);
+                    }
 
                     // Field name
                     Label fieldNameLabel = new Label();

@@ -1,11 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Net.Http;
-using System.Runtime.Remoting.Channels;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
+using Newtonsoft.Json;
 
 namespace DiscordEmbedSender
 {
@@ -73,7 +71,7 @@ namespace DiscordEmbedSender
                     type = type
                 };
 
-                string json = JsonConvert.SerializeObject(payload, Formatting.Indented);
+                string json = JsonConvert.SerializeObject(payload, Newtonsoft.Json.Formatting.Indented);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await httpClient.PostAsync($"{baseUrl}/api/send-embed", content);

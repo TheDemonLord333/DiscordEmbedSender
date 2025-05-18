@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
-using System.Runtime.Remoting.Channels;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -15,7 +14,7 @@ namespace DiscordEmbedSender
         public Form1()
         {
             InitializeComponent();
-            apiClient = new DiscordApiClient("http://ihre-server-ip:3000"); // Ersetzen Sie mit Ihrer Server-IP
+            apiClient = new DiscordApiClient(AppSettings.BotApiBaseUrl);
             LoadServersAsync();
         }
 

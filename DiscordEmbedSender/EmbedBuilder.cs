@@ -1,8 +1,7 @@
-﻿using Newtonsoft.Json;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
-using System.Xml;
+using Newtonsoft.Json;
 
 namespace DiscordEmbedSender
 {
@@ -261,7 +260,7 @@ namespace DiscordEmbedSender
         /// </summary>
         public string ToJson()
         {
-            return JsonConvert.SerializeObject(Build(), Formatting.Indented);
+            return JsonConvert.SerializeObject(Build(), Newtonsoft.Json.Formatting.Indented);
         }
 
         /// <summary>
