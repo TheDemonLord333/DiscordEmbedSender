@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace DiscordEmbedSender
 {
@@ -71,7 +71,8 @@ namespace DiscordEmbedSender
             copyJsonButton.Size = new Size(120, 30);
             copyJsonButton.Anchor = AnchorStyles.Right;
             copyJsonButton.Location = new Point(buttonPanel.Width - 240, 10);
-            copyJsonButton.Click += (s, e) => {
+            copyJsonButton.Click += (s, e) =>
+            {
                 Clipboard.SetText(JsonConvert.SerializeObject(embedData, Newtonsoft.Json.Formatting.Indented));
                 MessageBox.Show("JSON in Zwischenablage kopiert!", "Erfolg", MessageBoxButtons.OK, MessageBoxIcon.Information);
             };

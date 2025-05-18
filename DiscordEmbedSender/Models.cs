@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DiscordEmbedSender
+﻿namespace DiscordEmbedSender
 {
     // Discord Server Model
     public class Guild
