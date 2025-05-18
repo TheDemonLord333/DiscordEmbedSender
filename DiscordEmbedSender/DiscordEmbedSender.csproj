@@ -100,8 +100,14 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Icons\" />
+    <Content Include="Icons\add-field-icon.svg" />
+    <Content Include="Icons\app-icon.svg" />
+    <Content Include="Icons\preview-icon.svg" />
+    <Content Include="Icons\remove-field-icon.svg" />
+    <Content Include="Icons\search-user-icon.svg" />
+    <Content Include="Icons\send-icon.svg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
